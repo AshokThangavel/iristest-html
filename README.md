@@ -44,6 +44,35 @@ Do $System.OBJ.Load("src/IrisTestHTML/Report.cls", "ck")
 
 ; Generate report
 ; file path is optional
-; set the global ^UTReport("html") = filepath for defualt fetch
+; global for default fetch set ^UTReport("html") = $LB(filepath) 
 Do ##class(IrisTest.HTML.Report).Generate(UnitTestId,filePath)
+```
+## Docker support
+### Prerequisites
+Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
+### Installation
+Clone/git pull the repo into any local directory
+```
+$ git clone https://github.com/rcemper/PR_iristest-html.git
+```
+To build and start the container run:
+```
+$ docker compose up -d && docker compose logs -f
+```
+To open IRIS Terminal do:
+```
+$ docker-compose exec iris iris session iris
+USER>
+```
+or using **iTerm**:     
+[http://localhost:42773/iterm/](http://localhost:42773/iterm/)    
+
+To access IRIS System Management Portal:    
+[http://localhost:42773/csp/sys/UtilHome.csp](http://localhost:42773/csp/sys/UtilHome.csp)
+
+To access IRIS Standard Unit Test Portal:    
+[http://localhost:42773/csp/sys/%25UnitTest.Portal.Home.zen?$NAMESPACE=USER](http://localhost:42773/csp/sys/%25UnitTest.Portal.Home.zen?$NAMESPACE=USER)
+
+Viewing the last example produced during startup:    
+[http://localhost:42773/csp/user/IrisTest.HTML.Viewer.cls](http://localhost:42773/csp/user/IrisTest.HTML.Viewer.cls)
 

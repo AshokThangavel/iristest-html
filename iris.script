@@ -1,0 +1,19 @@
+zn "%SYS"
+  
+// Unexpire passwords and set up passwordless mode to simplify dev use.
+do ##class(Security.Users).UnExpireUserPasswords("*")
+zpm "install passwordless"
+zpm "install iterm"
+
+zn "USER"
+// Create /_vscode web app to support intersystems-community.testingmanager VS Code extension
+zpm "install vscode-per-namespace-settings"
+zpm "install shvarov-persistent"
+zpm "load /home/irisowner/dev -v":1
+zpm "list"
+// create demo unit test
+zpm "test shvarov-persistent"
+set ^UTReport("html")=$LB("/home/irisowner/dev/docs/")
+set demo=##class(IrisTest.HTML.Report).Generate(1)
+set ^UTReport($i(^UTReport))=demo
+halt
