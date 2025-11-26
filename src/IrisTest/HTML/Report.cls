@@ -4,10 +4,13 @@ Class IrisTest.HTML.Report Extends %RegisteredObject
 /// Parameters
 /// pUnitTestId - UnitTest Id
 /// filename will be UnitTestId_yyyymmddhhmmss.html e.g 88_20250709170704.html
-ClassMethod Generate(pUnitTestId As %Integer = 89, pFilePath As %String = "")
+ClassMethod Generate(pUnitTestId As %Integer = 89, pFilePath As %String = "") As %Status
 {
 	If pFilePath="" {
 		Set pFilePath = ##class(%File).NormalizeDirectory($LG(^UTReport("html")))
+	}
+	else{
+		Set pFilePath = ##class(%File).NormalizeDirectory(pFilePath)
 	}
 	Set file = ##class(%File).%New(pFilePath_pUnitTestId_"_"_$TR($ZDT($H,3)," -:")_".html")
 	Set st= file.Open("NW")
