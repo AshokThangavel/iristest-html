@@ -1,20 +1,7 @@
 # iristest-html
-HTML report viewer and generator.
-
-Generate clean, interactive HTML reports from InterSystems IRIS %UnitTest results — save them as static files or view them directly in your browser.
-
-![Made with ObjectScript](https://img.shields.io/badge/made%20with-ObjectScript-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-
----
-
-## 🚀 Overview
-
-`iristest-html` is a lightweight reporting tool that transforms raw IRIS `%UnitTest` output into a modern, readable HTML report.
+`iristest-html` is a lightweight HTML report generator that converts raw InterSystems IRIS `%UnitTest` output into a clean, modern, and easy-to-read HTML report. It enables you to produce clear, interactive test reports directly from InterSystems IRIS.
 
 It helps developers, testers, and teams visualize test results, share test runs, and improve traceability in both development and CI/CD pipelines.
-
----
 
 ## 🔧 Features
 
@@ -23,8 +10,6 @@ It helps developers, testers, and teams visualize test results, share test runs,
 - 🧭 Filterable and collapsible test views
 - 📂 Static, portable reports (no server needed)
 - ⚙️ Easy to integrate into DevOps pipelines
-
----
 
 ## ⚙️ Installation
 
@@ -49,7 +34,7 @@ To stop and remove the running containers:
 ```bash
 docker-compose down
 ```
-### Usage
+## Usage
 
 Run the code below to set the report path:
 ```objectscript
