@@ -184,7 +184,7 @@ ClassMethod SetUTReportHtmlPath(path As %String)
 	set @..#UTReportGbl("html") = path
 }
 
-/// setup file generated path
+/// get file generated path
 ClassMethod GetUTReportHtmlPath(path As %String) [ CodeMode = expression ]
 {
 $get(@..#UTReportGbl("html"))
