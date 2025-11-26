@@ -16,12 +16,6 @@ It helps developers, testers, and teams visualize test results, share test runs,
 
 ---
 
-## 📸 Example
-
-![HTML Report Screenshot](docs/example-report.png)
-
----
-
 ## 🔧 Features
 
 - ✅ Generates HTML reports from IRIS `%UnitTest` results
