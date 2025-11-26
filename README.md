@@ -10,7 +10,7 @@ Generate clean, interactive HTML reports from InterSystems IRIS %UnitTest result
 
 ## 🚀 Overview
 
-`iristest-html` is a lightweight reporting tool that transforms raw IRIS `%UnitTest` output into a modern, readable HTML report — inspired by tools like `pytest-html`.
+`iristest-html` is a lightweight reporting tool that transforms raw IRIS `%UnitTest` output into a modern, readable HTML report.
 
 It helps developers, testers, and teams visualize test results, share test runs, and improve traceability in both development and CI/CD pipelines.
 
@@ -32,18 +32,42 @@ It helps developers, testers, and teams visualize test results, share test runs,
 
 ---
 
-## 📦 Installation
+## ⚙️ Installation
 
-You can install the utility as part of your IRIS project or package it as a ZPM module (coming soon).
+### Clone the Repository
+```bash
+git clone https://github.com/AshokThangavel/iristest-html.git
+cd iristest-html
+````
 
-For now, clone the repo or include the class in your environment:
+### Running the Application with Docker
+
+Build and start the app using Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+### Stopping the Application
+
+To stop and remove the running containers:
+
+```bash
+docker-compose down
+```
+### Usage
+
+Set the path for the generated report under the global
+`^IrisTest.UTReport("html")`.
+
+If you define `^IrisTest.UTReport("html")`, you do **not** need to pass the file path when generating the report.
+If you *do* pass a file path, that path will be used.
+Otherwise, the default location within the `manager directory` will be selected.
+
+- **pUnitTestId** — Integer
+- **pFilePath** — Directory path (file name not required)
 
 ```objectscript
-; Load the class
-Do $System.OBJ.Load("src/IrisTestHTML/Report.cls", "ck")
-
-; Generate report
-; file path is optional
-; set the global ^UTReport("html") = filepath for defualt fetch
-Do ##class(IrisTest.HTML.Report).Generate(UnitTestId,filePath)
-
+set st = ##class(IrisTest.HTML.Report).GenerateReport(pUnitTestId, pFilePath)
+```
+On success, the generated file name is printed
