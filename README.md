@@ -57,8 +57,14 @@ docker-compose down
 ```
 ### Usage
 
-Set the path for the generated report under the global
-`^IrisTest.UTReport("html")`.
+Run the code below to set the report path:
+```objectscript
+do ##class(IrisTest.HTML.Report).SetUTReportHtmlPath(pPath)
+```
+Run the code below to get the previously defined path:
+```objectscript
+do ##class(IrisTest.HTML.Report).GetUTReportHtmlPath()
+```
 
 If you define `^IrisTest.UTReport("html")`, you do **not** need to pass the file path when generating the report.
 If you *do* pass a file path, that path will be used.

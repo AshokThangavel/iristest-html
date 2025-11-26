@@ -181,9 +181,14 @@ End
 /// setup file generated path
 ClassMethod SetUTReportHtmlPath(path As %String)
 {
-	set @..#UTReportGbl("html") = $listbuild(path,$zdatetime($now()))
+	set @..#UTReportGbl("html") = path
 }
 
+/// setup file generated path
+ClassMethod GetUTReportHtmlPath(path As %String) [ CodeMode = expression ]
+{
+$get(@..#UTReportGbl("html"))
+}
 ClassMethod Status(status As %Integer) [ CodeMode = expression ]
 {
 $case(status,0:"failed",1:"passed",:"skipped")
@@ -240,7 +245,7 @@ Method %OnNew(pUnitTestId As %Integer = "", pFilePath As %String = "") As %Statu
     set ..FileName = "ut-"_..UnitTestId_$translate($zdatetime($horolog,3)," -:")_".html"
 	set tAbsoluteFileName=""
 	if $data(@..#UTReportGbl("html"),filepath) {
-		set tAbsoluteFileName = ##class(%File).NormalizeDirectory($listget(filepath))_..FileName
+		set tAbsoluteFileName = ##class(%File).NormalizeDirectory(filepath)_..FileName
 	}
     elseif pFilePath'="" {
 		set tAbsoluteFileName = ##class(%File).NormalizeDirectory(pFilePath)_..FileName
