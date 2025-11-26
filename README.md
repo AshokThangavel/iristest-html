@@ -60,7 +60,7 @@ Run the code below to get the previously defined path:
 do ##class(IrisTest.HTML.Report).GetUTReportHtmlPath()
 ```
 
-If you define the path through SetUTReportHtmlPath(), you do **not** need to pass the file path when generating the report.
+If you define the path through `SetUTReportHtmlPath()`, you do **not** need to pass the file path when generating the report.
 If you *do* pass a file path, that path will be used.
 Otherwise, the default location within the `manager directory` will be selected.
 
